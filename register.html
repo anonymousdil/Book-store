@@ -1,0 +1,38 @@
+
+<!-- File: register.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register — Breeze Books</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="auth-page">
+    <form class="card" id="registerForm">
+      <h2>Create account</h2>
+      <label>Full name
+        <input type="text" id="fullname" required>
+      </label>
+      <label>Email
+        <input type="email" id="regemail" required>
+      </label>
+      <label>Password
+        <input type="password" id="regpassword" required>
+      </label>
+      <div class="row">
+        <button type="submit" class="btn">Register</button>
+        <a href="login.html" class="muted">Already have an account?</a>
+      </div>
+    </form>
+  </main>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('This is a static demo. Save the user on the server in a real site.');
+    });
+  </script>
+</body>
+</html>
+
