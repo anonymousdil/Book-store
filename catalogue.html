@@ -1,0 +1,85 @@
+
+<!-- File: catalogue.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catalogue — Top 10 Books</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="index.html">← Home</a>
+    <div class="brand">Breeze Books — Catalogue</div>
+    <button id="cartBtn2" class="cart-btn">🛒 <span id="cart-count-2">0</span></button>
+  </header>
+
+  <main class="container catalogue">
+    <h1>Top 10 Books in the World</h1>
+    <p class="muted">Curated list — click "Add to cart" to try the cart popup.</p>
+
+    <ul class="book-list" id="bookList">
+      <!-- JS will populate books -->
+    </ul>
+  </main>
+
+  <div id="cartModal2" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" id="closeCart2">✖</button>
+      <h2>Your Cart</h2>
+      <div id="cartItems2" class="cart-items">(cart is empty)</div>
+      <div class="cart-footer">
+        <div class="total">Total: ₹<span id="cartTotal2">0</span></div>
+        <button id="checkout2" class="btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Populate book list with top 10 books
+    const books = [
+      {id:1,title:'Don Quixote',author:'Miguel de Cervantes',price:299,desc:'A classic tale of chivalry and imagination.'},
+      {id:2,title:'A Tale of Two Cities',author:'Charles Dickens',price:249,desc:'A powerful novel set during the French Revolution.'},
+      {id:3,title:'The Lord of the Rings',author:'J.R.R. Tolkien',price:899,desc:'Epic high-fantasy adventure across Middle-earth.'},
+      {id:4,title:'The Little Prince',author:'Antoine de Saint-Exupéry',price:199,desc:'A poetic tale for children and adults.'},
+      {id:5,title:'Harry Potter and the Philosopher\'s Stone',author:'J.K. Rowling',price:399,desc:'The book that started a global phenomenon.'},
+      {id:6,title:'The Hobbit',author:'J.R.R. Tolkien',price:349,desc:'Bilbo Baggins\' unexpected journey.'},
+      {id:7,title:'War and Peace',author:'Leo Tolstoy',price:599,desc:'A vast panorama of Russian society.'},
+      {id:8,title:'Pride and Prejudice',author:'Jane Austen',price:259,desc:'A sharp, witty romantic novel.'},
+      {id:9,title:'The Diary of a Young Girl',author:'Anne Frank',price:199,desc:'Poignant diary from wartime.'},
+      {id:10,title:'The Divine Comedy',author:'Dante Alighieri',price:699,desc:'A monumental epic of the afterlife.'}
+    ];
+
+    const list = document.getElementById('bookList');
+    books.forEach(b => {
+      const li = document.createElement('li');
+      li.className = 'book-item';
+      li.innerHTML = `
+        <div class="info">
+          <h3>${b.title}</h3>
+          <p class="author">by ${b.author}</p>
+          <p class="desc">${b.desc}</p>
+        </div>
+        <div class="actions">
+          <div class="price">₹${b.price}</div>
+          <button class="btn add" data-id="${b.id}" data-title="${b.title}" data-price="${b.price}">Add to cart</button>
+        </div>
+      `;
+      list.appendChild(li);
+    });
+
+    // Delegate add-to-cart clicks
+    list.addEventListener('click', e => {
+      if (e.target.matches('.add')) {
+        const id = e.target.dataset.id;
+        const title = e.target.dataset.title;
+        const price = Number(e.target.dataset.price);
+        addToCart({id,title,price});
+        openCart('cartModal2');
+      }
+    });
+  </script>
+</body>
+</html>
