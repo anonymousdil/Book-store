@@ -1,0 +1,43 @@
+<!-- File: index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Breeze Books - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="catalogue-link" href="catalogue.html" target="_blank">Catalogue</a>
+    <div class="brand">Breeze Books</div>
+    <button id="cartBtn" class="cart-btn" aria-label="Open cart">🛒 <span id="cart-count">0</span></button>
+  </header>
+
+  <main class="hero">
+    <div class="hero-overlay">
+      <h1>Find your next peaceful read</h1>
+      <p class="sub">A calm place for curious minds</p>
+      <div class="cta-row">
+        <a class="btn" href="register.html">Register</a>
+        <a class="btn btn-ghost" href="login.html">Log in</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart modal (popup) -->
+  <div id="cartModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" id="closeCart">✖</button>
+      <h2>Your Cart</h2>
+      <div id="cartItems" class="cart-items">(cart is empty)</div>
+      <div class="cart-footer">
+        <div class="total">Total: ₹<span id="cartTotal">0</span></div>
+        <button id="checkout" class="btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
